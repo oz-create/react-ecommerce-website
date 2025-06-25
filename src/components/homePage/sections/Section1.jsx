@@ -2,7 +2,7 @@ import React from 'react'
 
 function Section1() {
     return (
-        <section className='flex h-[50rem] w-full relative items-center justify-end px-20 bg-[url("./assets/home-page-bg.png")] bg-cover bg-center'>
+        <section className='flex h-[50rem] w-full relative items-center justify-end px-20 bg-cover bg-center' style={{ backgroundImage: `url(./assets/home-page-bg.png)` }}>
             <div className='custom-container flex justify-end'>
                 <div className='bg-[#FFF3E3] p-5 rounded-2xl w-[40rem]'>
                     <h3 className='text-base font-semibold tracking-widest text-[#333333]'>New Arrival</h3>
