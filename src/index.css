@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import "tailwindcss";
+
+
+html {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+}
+
+.custom-container {
+    @apply w-full max-w-screen-xl mx-auto px-4;
+}
+
+.productCard:hover .productCardHover {
+    opacity: 1;
+}
+
+
+
+.slick-prev,
+.slick-next {
+    width: 3rem !important;
+    height: 3rem !important;
+    z-index: 1;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: #B88E2F !important;
+    font-size: 3rem !important;
+}
+
+.slick-dots li button:before {
+    color: #D8D8D8 !important;
+    font-size: 0.7rem !important;
+    transition: all 0.3s;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #B88E2F !important;
+    font-size: 1rem !important;
+}
+
+.slick-next {
+    right: -10px;
+}
+
+.css-1bug3cd-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    background-color: #B88E2F !important;
+}
+
+@media (max-width: 1500px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 1300px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1100px) {
+    html {
+        font-size: 12px;
+    }
+    .slick-slide button{
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .slick-initialized .slick-slide {
+        display: flex !important;
+        justify-content: center !important;
+    }
+    .slick-next {
+        right: 0px !important;
+    }
+
+    .slick-prev {
+        left: 0px !important;
+    }
+  
+}
