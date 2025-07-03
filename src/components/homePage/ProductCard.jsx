@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../store/reducers/productSlice';
-import { Button, IconButton, Snackbar } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 import { setOpen } from '../../store/reducers/snackbarSlice';
+import ShareProduct from './ShareProduct';
+import { useState } from 'react';
 
 
 function ProductCard({ product }) {
@@ -36,25 +35,54 @@ function ProductCard({ product }) {
 
 
 
-    const handleClick = () => {
+    const handleClick = (e) => {
+        e.stopPropagation();
         navigate('/' + product.id, { replace: true });
-        window.location.reload(); // brute force çözüm
+        window.location.reload(); 
     }
+    const [share,setShare] = useState(false)
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleShare = (e) => {
+        e.stopPropagation();
+        setShare(!share)
+        
+        
+    }
+   
 
     return (
-        <div onClick={handleClick}>
+        <div 
+        onClick={(e) => handleClick(e)}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => {
+            setIsHovered(false);
+            setShare(false); 
+        }}
+        >
             <div className='flex flex-col justify-between cursor-pointer md:w-[17.8rem] w-[25rem] md:h-[27.8rem] h-[35.8rem] md:pb-0 pb-[8rem] bg-[#F4F5F7] relative productCard'>
                 <div className='productCardHover w-full md:h-full h-[8rem] absolute bg-[rgba(58,58,58,0.7)] flex flex-col items-center justify-center gap-3 z-1 md:opacity-0 opacity-100 transition-opacity duration-300 bottom-0 md:p-0 p-4'>
 
                     <button onClick={(e) => addToCartClick(e)} className='bg-white text-[#B88E2F] hover:bg-[#B88E2F] hover:text-white transition-all md:text-base text-xl font-semibold md:py-3 py-4 px-10 cursor-pointer md:w-auto w-full'>Add to cart</button>
 
 
-                    <div className='flex items-center justify-center gap-3'>
-                        <div className='flex items-center justify-center gap-2 cursor-pointer'>
+                    <div className='flex items-center justify-center relative gap-3' onClick={(e) => e.stopPropagation()}>
+                        <div className='flex items-center  justify-center gap-2 cursor-pointer'>
+                            
                             <svg className='w-[1rem]' viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 10.6667C11.4747 10.6667 11 10.8734 10.644 11.2047L5.94 8.46671C5.97333 8.31337 6 8.16004 6 8.00004C6 7.84004 5.97333 7.68671 5.94 7.53337L10.64 4.79337C11 5.12671 11.4733 5.33337 12 5.33337C13.1067 5.33337 14 4.44004 14 3.33337C14 2.22671 13.1067 1.33337 12 1.33337C10.8933 1.33337 10 2.22671 10 3.33337C10 3.49337 10.0267 3.64671 10.06 3.80004L5.36 6.54004C5 6.20671 4.52667 6.00004 4 6.00004C2.89333 6.00004 2 6.89337 2 8.00004C2 9.10671 2.89333 10 4 10C4.52667 10 5 9.79337 5.36 9.46004L10.0587 12.2054C10.0211 12.3563 10.0014 12.5112 10 12.6667C10 13.0623 10.1173 13.4489 10.3371 13.7778C10.5568 14.1067 10.8692 14.3631 11.2346 14.5145C11.6001 14.6658 12.0022 14.7054 12.3902 14.6283C12.7781 14.5511 13.1345 14.3606 13.4142 14.0809C13.6939 13.8012 13.8844 13.4448 13.9616 13.0569C14.0387 12.6689 13.9991 12.2668 13.8478 11.9013C13.6964 11.5359 13.44 11.2235 13.1111 11.0038C12.7822 10.784 12.3956 10.6667 12 10.6667Z" fill="white" />
+                            <path d="M12 10.6667C11.4747 10.6667 11 10.8734 10.644 11.2047L5.94 8.46671C5.97333 8.31337 6 8.16004 6 8.00004C6 7.84004 5.97333 7.68671 5.94 7.53337L10.64 4.79337C11 5.12671 11.4733 5.33337 12 5.33337C13.1067 5.33337 14 4.44004 14 3.33337C14 2.22671 13.1067 1.33337 12 1.33337C10.8933 1.33337 10 2.22671 10 3.33337C10 3.49337 10.0267 3.64671 10.06 3.80004L5.36 6.54004C5 6.20671 4.52667 6.00004 4 6.00004C2.89333 6.00004 2 6.89337 2 8.00004C2 9.10671 2.89333 10 4 10C4.52667 10 5 9.79337 5.36 9.46004L10.0587 12.2054C10.0211 12.3563 10.0014 12.5112 10 12.6667C10 13.0623 10.1173 13.4489 10.3371 13.7778C10.5568 14.1067 10.8692 14.3631 11.2346 14.5145C11.6001 14.6658 12.0022 14.7054 12.3902 14.6283C12.7781 14.5511 13.1345 14.3606 13.4142 14.0809C13.6939 13.8012 13.8844 13.4448 13.9616 13.0569C14.0387 12.6689 13.9991 12.2668 13.8478 11.9013C13.6964 11.5359 13.44 11.2235 13.1111 11.0038C12.7822 10.784 12.3956 10.6667 12 10.6667Z" fill="white" />
                             </svg>
-                            <p className='text-white text-base font-semibold'>Share</p>
+                            <p className='text-white text-base font-semibold' onClick={(e) => handleShare(e)}>Share</p>
+                                {
+                                        isHovered && share && (
+                                        <ShareProduct
+                                            url={`${window.location.href}${product.id}`}
+                                            name={product.name}
+                                            onClick={(e) => e.stopPropagation()}
+                                        />
+                                        )
+                                }
+                            
                         </div>
 
                         <div className='flex items-center justify-center gap-2 cursor-pointer'>
