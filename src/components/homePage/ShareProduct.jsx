@@ -4,11 +4,12 @@ const ShareProduct = ({ url, name }) => {
 
   const encodedUrl = encodeURIComponent(url);
   const encodedText = encodeURIComponent(`Check out this product: ${name}`);
+  const whatsappUrl = encodeURIComponent(`Check out this product: ${name}, ${url}`);
 
   const shareLinks = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
     twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedText}`,
-    whatsapp: `https://wa.me/?text=${encodedText}`,
+    whatsapp: `https://wa.me/?text=${whatsappUrl}`,
   };
 
   return (
@@ -19,7 +20,7 @@ const ShareProduct = ({ url, name }) => {
       <a href={shareLinks.twitter} target="_blank" rel="noopener noreferrer">
         <img src="/assets/twitter.png" alt="Share on Twitter" className="w-[2rem] h-auto" />
       </a>
-      <a href={shareLinks.whatsapp} target="_blank" rel="noopener noreferrer">
+     <a href={shareLinks.whatsapp} target="_blank" rel="noopener noreferrer">
         <img src="/assets/whatsapp.png" alt="Share on WhatsApp" className="w-[2rem] h-auto" />
       </a>
     </div>

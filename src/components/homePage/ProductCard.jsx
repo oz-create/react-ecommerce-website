@@ -77,7 +77,7 @@ function ProductCard({ product }) {
                                         isHovered && share && (
                                         <ShareProduct
                                             url={`${window.location.href}${product.id}`}
-                                            name={product.name}
+                                            name={name}
                                             onClick={(e) => e.stopPropagation()}
                                         />
                                         )
