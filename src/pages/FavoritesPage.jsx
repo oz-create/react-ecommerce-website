@@ -11,7 +11,7 @@ function FavoritesPage() {
     <div className='flex flex-col justify-center items-center'>
         <PageHeaderBreadcrumb pageName={"Favorites"}/>
          {
-            favoritesProducts.length > 0 ?  <FavoritesList /> : <h1 className='py-20 text-2xl capitalize'>Your cart is empty</h1>
+            favoritesProducts.length > 0 ?  <FavoritesList /> : <h1 className='py-20 text-2xl capitalize'>Your favorites are empty</h1>
         }
         <ShoppingAdventages />
        
