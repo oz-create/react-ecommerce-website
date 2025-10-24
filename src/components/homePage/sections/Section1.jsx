@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Section1() {
     return (
@@ -8,7 +9,10 @@ function Section1() {
                     <h3 className='text-base font-semibold tracking-widest text-[#333333]'>New Arrival</h3>
                     <h1 className='text-[#B88E2F] font-bold text-[3.25rem] leading-[120%]'>Discover Our <br /> New Collection</h1>
                     <p className='text-lg text-[#333333] leading-[120%] font-medium'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
-                    <button className='bg-[#B88E2F] text-white text-base leading-none font-bold px-15 py-7 mt-10 cursor-pointer hover:bg-white hover:text-[#B88E2F] transition-all sm:w-auto w-full'>BUY NOW</button>
+                    <Link to="/shop/furniture">
+                        <button className='bg-[#B88E2F] text-white text-base leading-none font-bold px-15 py-7 mt-10 cursor-pointer hover:bg-white hover:text-[#B88E2F] transition-all sm:w-auto w-full'>BUY NOW</button>
+                    </Link>
+                    
                 </div>
             </div>
         </section>
