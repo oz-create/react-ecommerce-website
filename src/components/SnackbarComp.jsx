@@ -7,9 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setOpen } from '../store/reducers/snackbarSlice';
 
 function SnackbarComp() {
-
   const dispatch = useDispatch()
-  const { open } = useSelector((state) => state.snackbar)
+  const { open, message } = useSelector((state) => state.snackbar)
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -38,9 +37,9 @@ function SnackbarComp() {
                         open={open}
                         autoHideDuration={2000}
                         onClose={handleClose}
-                        message="Product added to cart"
+                        message={message}
                         action={action}
-                        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+                        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         />
     </div>
   )

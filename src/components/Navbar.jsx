@@ -12,6 +12,7 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import FavoritesPage from '../pages/FavoritesPage'
 
 
 function Navbar() {
@@ -19,6 +20,7 @@ function Navbar() {
   const dispatch = useDispatch()
   const [openNavMobile,setOpenNavMobile] = useState(false);
   const { cartProducts } = useSelector((state) => state.product)
+  const { favoritesProducts } = useSelector((state) => state.favorites)
 
    const menuRef = useRef();
 
@@ -42,8 +44,7 @@ function Navbar() {
   cartProducts.map((product) => {
     totalQuantity += product.quantity
   })
-  
-  
+
 
   const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -82,7 +83,13 @@ function Navbar() {
       <div className='icons flex lg:gap-20 md:gap-20 gap-0 items-center lg:justify-center md:justify-center justify-between lg:w-auto w-full'>
         <img src={User} alt="" />
         <img src={Search} alt="" />
-        <img src={Heart} alt="" />
+        <Link to="/favorites">
+        <StyledBadge badgeContent={favoritesProducts.length} color='primary'>
+          <img src={Heart} alt="" />
+        </StyledBadge>
+          
+        </Link>
+        
         <IconButton aria-label="cart"  onClick={() => dispatch(toggleDrawer())}>
           <StyledBadge badgeContent={totalQuantity} color='primary'>
             <img src={Cart} alt="" className='cursor-pointer' />

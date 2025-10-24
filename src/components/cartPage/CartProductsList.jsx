@@ -30,7 +30,11 @@ function CartProductsList() {
                         cartProducts.map((product) => {
                             return (
                                 <tr key={product.id}>
-                                    <td className='border-spacing-2 py-3 text-base'><img src={product.images[0]} className='w-[6rem] h-[6rem] object-contain bg-[#F9F1E7] rounded-md' alt="" /></td>
+                                    <td className='border-spacing-2 py-3 text-base'>
+                                        <Link to={`/${product.id}`}>
+                                            <img src={product.images[0]} className='w-[6rem] h-[6rem] object-contain bg-[#F9F1E7] rounded-md' alt="" />
+                                        </Link>
+                                    </td>
                                     <td className='border-spacing-2 p-3 text-base'>{product.title}</td>
                                     <td className='border-spacing-2 p-3 text-base'>{product.price}$</td>
                                     <td className='border-spacing-2 p-3 text-base'>

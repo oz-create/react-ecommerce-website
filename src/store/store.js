@@ -6,6 +6,7 @@ import persistReducer from 'redux-persist/es/persistReducer';
 import persistStore from 'redux-persist/es/persistStore';
 import sessionStorage from 'redux-persist/es/storage/session';
 import snackbarReducer from './reducers/snackbarSlice'
+import favoritesReducer from './reducers/favoritesSlice';
 
 const persistConfig = {
   key: 'root',
@@ -16,7 +17,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   product: productReducer,
   modal: modalReducer,
-  snackbar: snackbarReducer
+  snackbar: snackbarReducer,
+  favorites: favoritesReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

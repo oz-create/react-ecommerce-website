@@ -33,7 +33,9 @@ function ShoppingCartModal() {
           cartProducts.map((product) => {
             return (
               <div key={product.id} className="flex justify-between gap-3 items-center mb-4 w-full border-b-1 border-[#D9D9D9] pb-5">
-                <img className='w-[5rem] h-[5rem] object-cover bg-[#F9F1E7] rounded-lg' src={product.images[0]} alt="" />
+                 <Link to={`/${product.id}`}>
+                  <img className='w-[5rem] h-[5rem] object-cover bg-[#F9F1E7] rounded-lg' src={product.images[0]} alt="" />
+                 </Link>
                 <div className='flex flex-col justify-center items-start w-full'>
                   <h2 className="font-bold mb-1 text-base text-left">{product.title}</h2>
                   <div className='flex items-center gap-3'>
