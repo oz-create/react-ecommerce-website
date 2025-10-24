@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Drawer } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleDrawer } from '../store/reducers/modalSlice';

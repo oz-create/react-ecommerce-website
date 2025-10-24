@@ -1,7 +1,5 @@
-import React from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeFromCart } from '../../store/reducers/productSlice';
 import { Link } from 'react-router-dom';
 import { removeFromFavorites } from '../../store/reducers/favoritesSlice';
 

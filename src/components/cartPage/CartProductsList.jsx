@@ -1,4 +1,3 @@
-import React from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, decreaseFromCart, removeFromCart } from '../../store/reducers/productSlice';

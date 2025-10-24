@@ -1,7 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import productReducer from "./reducers/productSlice";
 import modalReducer from "./reducers/modalSlice";
-import storage from 'redux-persist/lib/storage'; // localStorage
 import persistReducer from 'redux-persist/es/persistReducer';
 import persistStore from 'redux-persist/es/persistStore';
 import sessionStorage from 'redux-persist/es/storage/session';
@@ -11,7 +10,7 @@ import favoritesReducer from './reducers/favoritesSlice';
 const persistConfig = {
   key: 'root',
   storage: sessionStorage,
-  whitelist: ['product','modal'] // sadece product slice'ı saklanacak
+  whitelist: ['product','modal','favorites'] 
 };
 
 const rootReducer = combineReducers({

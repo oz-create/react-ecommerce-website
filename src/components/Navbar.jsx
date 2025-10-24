@@ -12,7 +12,6 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import FavoritesPage from '../pages/FavoritesPage'
 
 
 function Navbar() {

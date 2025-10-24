@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function ProductImages({ images }) {
+    console.log(images);
     const [mainImage, setMainImage] = useState(images[0]);
     const [hoveredImage, setHoveredImage] = useState(null);
+
+    useEffect(() => {
+        setMainImage(images[0]);
+    }, [images]);
 
     const displayImage = hoveredImage || mainImage;
 
