@@ -6,12 +6,12 @@ import FavoritesList from '../components/favoritesPage/FavoritesList';
 
 
 function FavoritesPage() {
-  const { cartProducts } = useSelector((state) => state.product);
+  const { favoritesProducts } = useSelector((state) => state.favorites);
   return (
     <div className='flex flex-col justify-center items-center'>
         <PageHeaderBreadcrumb pageName={"Favorites"}/>
          {
-            cartProducts.length > 0 ?  <FavoritesList /> : <h1 className='py-20 text-2xl capitalize'>Your cart is empty</h1>
+            favoritesProducts.length > 0 ?  <FavoritesList /> : <h1 className='py-20 text-2xl capitalize'>Your cart is empty</h1>
         }
         <ShoppingAdventages />
        
