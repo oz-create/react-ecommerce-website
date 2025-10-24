@@ -3,13 +3,16 @@ import React, { useState } from 'react'
 import { addMultipleToCart } from '../../store/reducers/productSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setOpen } from '../../store/reducers/snackbarSlice';
+import { setOpen, updateMessage } from '../../store/reducers/snackbarSlice';
+import { addToFavorites, removeFromFavorites } from '../../store/reducers/favoritesSlice';
 
 
 
 function ProductFeatures({ product }) {
-    console.log(product);
+    const { favoritesProducts } = useSelector((state) => state.favorites);
 
+    const favoritesProductsIds = favoritesProducts.map(item => item.id);
+    const isFavorited = favoritesProductsIds.includes(product.id);
 
     const dispatch = useDispatch();
 
@@ -28,6 +31,22 @@ function ProductFeatures({ product }) {
     dispatch(addMultipleToCart({ product, quantity: localQuantity }));
     dispatch(setOpen(true))
     };
+
+    const addToFavoritesClick = (e) => {
+         e.stopPropagation();
+        if (isFavorited) {
+            dispatch(removeFromFavorites(product.id))
+            dispatch(setOpen(true))
+            dispatch(updateMessage("Product removed to favorites"))
+        }else{
+            dispatch(addToFavorites(product))
+            dispatch(setOpen(true))
+            dispatch(updateMessage("Product added to favorites"))
+        }
+       
+
+    }
+
 
     return (
         <div className='md:w-[30rem] w-full flex flex-col gap-4'>
@@ -59,6 +78,7 @@ function ProductFeatures({ product }) {
             </div>
             <p className='text-base'>{product.description}</p>
             <div className="flex gap-3">
+
                 <div className='flex items-center gap-2 justify-between border-1 border-[#9F9F9F] rounded-md p-3 min-w-[7rem]'>
                     <button
                         className='cursor-pointer rounded-md text-base'
@@ -75,11 +95,15 @@ function ProductFeatures({ product }) {
                     </button>
 
                 </div>
-                <button onClick={handleAddToCart} className='p-3 border-1 border-black rounded-md text-base cursor-pointer hover:bg-black hover:text-white transition min-w-[9rem]'>Add To Cart</button>
-                 <Link to="/cart" className='w-full'>
-                    <button onClick={handleAddToCart} className='p-3 border-1 border-black rounded-md text-base cursor-pointer hover:bg-black hover:text-white transition min-w-[9rem]'>Go To Cart</button>
-                 </Link>
-                
+                <button onClick={handleAddToCart} className='p-3 border-1 border-black rounded-md text-base cursor-pointer hover:bg-black hover:text-white transition min-w-[8rem]'>Add To Cart</button>
+                <Link to="/cart" className='w-full'>
+                    <button onClick={handleAddToCart} className='p-3 border-1 border-black rounded-md text-base cursor-pointer hover:bg-black hover:text-white transition min-w-[8rem]'>Go To Cart</button>
+                </Link>
+                <button className={`cursor-pointer border border-black rounded-full min-w-[3rem] h-[3rem] flex items-center justify-center  hover:fill-black ${isFavorited ? 'fill-black' : "fill-none"}`} onClick={(e) => addToFavoritesClick(e)}>
+                    <svg className={`w-[2rem] fill-inherit transition-all duration-1000 pointer-events-none ${isFavorited ? 'fill-black' : ""}`} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.99973 14.0361C-5.33333 6.66669 3.99999 -1.33331 7.99973 3.72539C12 -1.33331 21.3333 6.66669 7.99973 14.0361Z" stroke="black" strokeWidth="1.8" />
+                    </svg>
+                </button>
             </div>
 
 

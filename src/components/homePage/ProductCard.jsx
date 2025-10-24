@@ -1,16 +1,20 @@
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../store/reducers/productSlice';
 import { setOpen, updateMessage } from '../../store/reducers/snackbarSlice';
 import ShareProduct from './ShareProduct';
 import { useState } from 'react';
-import { addToFavorites } from '../../store/reducers/favoritesSlice';
+import { addToFavorites, removeFromFavorites } from '../../store/reducers/favoritesSlice';
 
 
 function ProductCard({ product }) {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const { favoritesProducts } = useSelector((state) => state.favorites);
+    const favoritesProductsIds = favoritesProducts.map(item => item.id);
+    const isFavorited = favoritesProductsIds.includes(product.id);
 
 
     const addToCartClick = (e) => {
@@ -22,9 +26,15 @@ function ProductCard({ product }) {
 
     const addToFavoritesClick = (e) => {
         e.stopPropagation();
-        dispatch(addToFavorites(product))
-        dispatch(setOpen(true))
-        dispatch(updateMessage("Product added to favorites"))
+        if (isFavorited) {
+            dispatch(removeFromFavorites(product.id))
+            dispatch(setOpen(true))
+            dispatch(updateMessage("Product removed to favorites"))
+        }else{
+            dispatch(addToFavorites(product))
+            dispatch(setOpen(true))
+            dispatch(updateMessage("Product added to favorites"))
+        }   
     }
 
 
@@ -94,8 +104,8 @@ function ProductCard({ product }) {
                             
                         </div>
 
-                        <button className='flex items-center justify-center gap-2 cursor-pointer' onClick={(e) => addToFavoritesClick(e)}>
-                            <svg className='w-[1rem]' viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <button className='flex items-center justify-center gap-2 cursor-pointer hover:fill-white' onClick={(e) => addToFavoritesClick(e)}>
+                            <svg className={`w-[1rem] fill-inherit ${isFavorited ? "fill-white" : ""}`} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7.99973 14.0361C-5.33333 6.66669 3.99999 -1.33331 7.99973 3.72539C12 -1.33331 21.3333 6.66669 7.99973 14.0361Z" stroke="white" strokeWidth="1.8" />
                             </svg>
                             <p className='text-white text-base font-semibold'>Like</p>

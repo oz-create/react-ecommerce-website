@@ -80,7 +80,6 @@ function Navbar() {
         <Link to="/contact" className={`text-xl font-medium ${location.pathname === '/contact' ? 'border-b-2 border-black' : ''}`}>Contact</Link>
       </div>
       <div className='icons flex lg:gap-20 md:gap-20 gap-0 items-center lg:justify-center md:justify-center justify-between lg:w-auto w-full'>
-        <img src={User} alt="" />
         <img src={Search} alt="" />
         <Link to="/favorites">
         <StyledBadge badgeContent={favoritesProducts.length} color='primary'>
