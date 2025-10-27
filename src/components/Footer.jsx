@@ -36,7 +36,7 @@ function Footer() {
       </div>
      
       <div className='flex max-w-[70rem] w-full m-auto justify-start border-[#D9D9D9] border-t-1'>
-        <p className='text-black font-medium text-base py-10 w-full lg:text-left text-center'>2023 furino. All rights reverved</p>
+        <p className='text-black font-medium text-base py-10 w-full lg:text-left text-center'>2025 Oz-Create. All rights reverved</p>
       </div>
     </div>
   )

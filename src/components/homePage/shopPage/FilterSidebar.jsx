@@ -20,7 +20,7 @@ function FilterSidebar({
     [3, 4],
     [4, 5]
   ];
-  console.log(openFilterMobile);
+
   const menuRef = useRef();
 
   useEffect(() => {

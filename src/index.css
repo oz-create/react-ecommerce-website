@@ -90,3 +90,9 @@ html {
     }
   
 }
+
+@media (max-width: 350px) {
+    html {
+        font-size: 11px;
+    }
+}

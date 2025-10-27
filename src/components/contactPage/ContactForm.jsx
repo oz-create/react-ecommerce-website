@@ -34,7 +34,6 @@ function ContactForm({ ref }) {
                 initialValues={{ name: "", subject: "", email: "", message: ""  }}
                 validationSchema={validationSchema}
                 onSubmit={(values, { resetForm }) => {
-                    console.log("Form gönderildi:", values);
                     resetForm();
                 }}
             >

@@ -6,7 +6,6 @@ import { removeFromFavorites } from '../../store/reducers/favoritesSlice';
 function FavoritesList() {
     const dispatch = useDispatch();
     const { favoritesProducts } = useSelector((state) => state.favorites);
-    console.log(favoritesProducts);
 
     let total = 0;
     for (let i = 0; i < favoritesProducts.length; i++) {

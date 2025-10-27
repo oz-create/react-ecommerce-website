@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 function OrderDetails({ onPlaceOrder }) {
     const { cartProducts } = useSelector((state) => state.product);
-    console.log(cartProducts);
 
     let total = 0;
     for (let i = 0; i < cartProducts.length; i++) {

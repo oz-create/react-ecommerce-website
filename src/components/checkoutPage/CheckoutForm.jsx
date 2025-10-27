@@ -44,7 +44,6 @@ function CheckoutForm({ ref }) {
                 initialValues={{ firstName: "", lastName: "", city: "", email: "", address: "", zipcode: "", phone: "" }}
                 validationSchema={validationSchema}
                 onSubmit={(values, { resetForm }) => {
-                    console.log("Form gönderildi:", values);
                     resetForm();
                 }}
             >

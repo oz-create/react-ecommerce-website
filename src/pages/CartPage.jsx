@@ -7,7 +7,6 @@ import ShoppingAdventages from '../components/cartPage/ShoppingAdventages';
 function CartPage() {
 
   const { cartProducts } = useSelector((state) => state.product);
-  console.log(cartProducts);
   
   return (
     <div className='flex flex-col justify-center items-center'>
