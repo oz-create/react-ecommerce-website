@@ -60,7 +60,10 @@ function Navbar() {
   return (
     <div className='flex lg:flex-row flex-col w-full lg:justify-between justify-center lg:gap-0 gap-3 items-center lg:px-20 px-10 lg:h-[6.25rem] h-[10rem] sticky top-0 bg-white z-10'>
       <div className='flex items-center justify-between lg:w-auto w-full'>
-        <img src={Logo} alt="" className='w-[12rem] mt-2' />
+        <Link to="/">
+         <img src={Logo} alt="" className='w-[12rem] mt-2' />
+        </Link>
+       
       <div  ref={menuRef} className='lg:hidden inline-block' onClick={() => setOpenNavMobile(!openNavMobile)}>
         {
           openNavMobile ? <CloseIcon style={{fontSize: "3rem"}} /> : <MenuIcon style={{fontSize: "3rem"}} />
